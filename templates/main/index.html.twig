@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<section class="home"> 
+ <div id="Haut">
+    <div id="logo">
+      <img src={{ asset( "media/logoNFTidentity.png")}} >
+    </div>
+
+    <div id="Menu">
+      <span id="Explication">
+        <a href="Explication.html">Explication</a>
+      </span>
+      <span id="CCM">
+        <a href="CCM.html">Comment ça marche</a>
+      </span>
+      <span id="FAQ">
+        <a href="FAQ.html">FAQ</a>     
+    </div>
+  </div>
+
+  <div id="Contact">
+    <span id ="cont">
+      <input type="button" onclick="window.location.href = 'contact.html'" class="contact" value="Contactez-nous">    </span>
+  </div>
+</div>
+
+
+
+
+<div id="PA">
+  <h2>
+    Découvrez <br> une solution d'avenir <br>
+    pour <span class="ChangeText "></span>
+  </h2>
+</div>
+     
+
+<div id="Exemple">
+  <img src={{ asset( "media/NFT.png" )}} class="portrait">
+</div>
+
+
+{% if app.user %} 
+
+<div id="CreerunNFT">
+  <input type="button" onclick="window.location.href = 'Creernft.html'" class="NFTcreation" value="Creer votre NFT">    </span>
+</div>
+
+{% else %}
+
+<div id="CreerunNFT">
+  <input type="button" onclick="window.location.href = ' {{ path('add') }} '" class="NFTcreation" value="Creer votre NFT">    </span>
+</div>
+{# {{ path('add') }}  #}
+
+{% endif %}
+   {% if not app.user %}
+
+ <div id="Connex">
+    <span id ="connexion">
+       <input type="button" onclick= "window.location.href= '{{ path('app_login')}}'" class="Connexion" value="Connexion">
+  </div>
+
+      {% endif %}
+      {% if app.user %}
+
+<a href="{{ path('app_logout')}} ">Me déconnecter </a>
+
+      {% endif %}
+
+
+  <div id="CreerCompte">
+    <input type="button" onclick="window.location.href = '{{ path('app_register')}}'" class="creecompte" value="Creer Compte">
+  </div>
+
+</section>
+
+ 
+
+{% endblock %}
