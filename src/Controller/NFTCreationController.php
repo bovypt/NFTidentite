@@ -33,6 +33,7 @@ class NFTCreationController extends AbstractController
             $entityManager = $this->entityManager;
             $entityManager->persist($NFT);
             $entityManager->flush();
+            return $this->redirectToRoute('ajoutpermi'); 
         }
  
         return $this->render('nft_creation/add.html.twig', [

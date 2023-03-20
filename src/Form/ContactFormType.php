@@ -2,29 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\NFTCreation;
+use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class NFTformType extends AbstractType
+class ContactFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Nom', options:[
+            ->add('email', options : [
                 'label' => false
             ])
-            ->add('Prenom', options:[
+            ->add('objet', options : [
                 'label' => false
             ])
-            ->add('D_naissance', options:[
-                'years'=>range(1900, 2023),
-                'label' => 'Date de naissance'
-            ]
-            )
-            ->add('Lieu_naissance', options:[
-                'label' => false
+            ->add('Form', options : [
+                'label' => "Formulaire "
             ])
         ;
     }
@@ -32,7 +27,7 @@ class NFTformType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => NFTCreation::class,
+            'data_class' => Contact::class,
         ]);
     }
 }

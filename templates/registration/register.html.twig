@@ -1,19 +1,33 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ asset('CSS/style.css')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
 
-{% block title %}Register{% endblock %}
+<body>
+<section class="HomeConnexion">
+  <div id="logocréationNFT">    
+   <a href=" {{ path('main')}}"> <img src={{ asset( "media/logoNFTidentity.png")}} > </a>
+   </div>
+<div id="FormConnexion">
 
-{% block body %}
-    <h1>Register</h1>
+    {{ form_start(registrationForm)}}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
+        <h2 id="fh">Inscription</h2>
+
+        {{ form_row(registrationForm.email, {'attr': {'class' : 'fc', 'placeholder' : 'Adresse Mail'}})}}
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            'attr': {'class' : 'fc', 'placeholder' :'Mot de passe'}
         }) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">S'inscrire</button>
 
-  
 
     {{ form_end(registrationForm) }}
-{% endblock %}
+    
+    </div>
+    </section>
+
+    </body>

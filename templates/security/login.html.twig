@@ -1,9 +1,12 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ asset('CSS/style.css')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
 
-{% block title %}Log in!{% endblock %}
-
-{% block body %}
-<form method="post">
+<body>
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -13,12 +16,20 @@
             Vous êtes connecté(e) comme {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
-    
-    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <section class="HomeConnexion">
+  <div id="logocréationNFT">    
+   <a href=" {{ path('main')}}"> <img src={{ asset( "media/logoNFTidentity.png")}} > </a>
+   </div>
+
+
+<div id="FormConnexion">
+    <form method="post">
+    <h2 id="fh">Connexion</h2>
+    <label for="inputEmail"></label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="fc" autocomplete="email" required autofocus placeholder="Email">
+    <label for="inputPassword"></label>
+    <input type="password" name="password" id="inputPassword" class="fc" autocomplete="current-password" required placeholder="Mot de passe">
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
@@ -34,9 +45,14 @@
             </label>
         </div>
     #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+<br>
+<br>
+    <button class="btn" type="submit">
+        Se connecter
     </button>
 </form>
-{% endblock %}
+  </div>
+    </section>
+
+    </body>
+

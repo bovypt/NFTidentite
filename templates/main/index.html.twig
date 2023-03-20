@@ -21,13 +21,25 @@
     </div>
   </div>
 
+
+{% if not app.user %}
+
+  <div id="m">
+
+  
+    <input type="button" onclick="window.location.href = '{{ path('app_register')}}'" class="contact" value="Creer Compte">
+    </div>
+{% endif %}
+
   <div id="Contact">
     <span id ="cont">
-      <input type="button" onclick="window.location.href = 'contact.html'" class="contact" value="Contactez-nous">    </span>
-  </div>
+
+    
+    <input type="button" onclick="window.location.href = ' {{ path('formcontact') }} '" class="contact" value="Contactez-nous">    
+
+
+  </div></span>
 </div>
-
-
 
 
 <div id="PA">
@@ -39,22 +51,28 @@
      
 
 <div id="Exemple">
-  <img src={{ asset( "media/NFT.png" )}} class="portrait">
+  <img src={{ asset( "media/NFT.jpg" )}} class="portrait">
 </div>
 
 
 {% if app.user %} 
 
 <div id="CreerunNFT">
-  <input type="button" onclick="window.location.href = 'Creernft.html'" class="NFTcreation" value="Creer votre NFT">    </span>
+  <input type="button" onclick="window.location.href = '  {{ path('add') }} '" class="NFTcreation" value="Creer votre NFT">    </span>
 </div>
+
+
 
 {% else %}
 
 <div id="CreerunNFT">
-  <input type="button" onclick="window.location.href = ' {{ path('add') }} '" class="NFTcreation" value="Creer votre NFT">    </span>
+
+{{
+  '<input type="button" onclick=" afficherAlerte() " class="NFTcreation" value="Demande de NFT"> '   
+}}
+</span>
 </div>
-{# {{ path('add') }}  #}
+
 
 {% endif %}
    {% if not app.user %}
@@ -67,17 +85,21 @@
       {% endif %}
       {% if app.user %}
 
-<a href="{{ path('app_logout')}} ">Me déconnecter </a>
+    <div id="Connex">
+      <span id ="connexion">
+        <input type="button" onclick= "window.location.href= '{{ path('app_logout')}}'" class="Connexion" value="Déconnexion">
+    </div>
 
       {% endif %}
 
 
-  <div id="CreerCompte">
-    <input type="button" onclick="window.location.href = '{{ path('app_register')}}'" class="creecompte" value="Creer Compte">
-  </div>
+ 
 
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<script src=" {{ asset('js/script.js')}}"> </script>
  
 
 {% endblock %}
