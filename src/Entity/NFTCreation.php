@@ -26,6 +26,9 @@ class NFTCreation
     #[ORM\Column(length: 255)]
     private ?string $Lieu_naissance = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $date_demande = null;
+
    
     public function setID(int $ID): self
     {
@@ -78,6 +81,18 @@ class NFTCreation
     public function setLieuNaissance(string $Lieu_naissance): self
     {
         $this->Lieu_naissance = $Lieu_naissance;
+
+        return $this;
+    }
+
+    public function getDateDemande(): ?\DateTimeInterface
+    {
+        return $this->date_demande;
+    }
+
+    public function setDateDemande(\DateTimeInterface $date_demande): self
+    {
+        $this->date_demande = $date_demande;
 
         return $this;
     }
